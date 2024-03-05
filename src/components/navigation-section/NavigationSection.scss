@@ -1,0 +1,28 @@
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  .logo-container {
+    margin-top: 22px;
+    height: 71px;
+    display: flex;
+  }
+  .nav-links {
+    .list-of-links {
+      margin-top: 44px;
+      list-style-type: none;
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+
+      a {
+        font-family: "Karla";
+        font-size: 20px;
+        font-weight: 700;
+        color: black;
+        text-decoration: none;
+        justify-content: space-between;
+      }
+    }
+  }
+}

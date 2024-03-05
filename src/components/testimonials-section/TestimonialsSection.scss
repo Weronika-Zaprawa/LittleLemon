@@ -1,0 +1,25 @@
+.section-testimonials-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 76px;
+  padding-bottom: 180px;
+  background-color: #d9d9d9;
+  header {
+    margin-top: 98px;
+    margin-bottom: 90px;
+    display: flex;
+    justify-content: center;
+
+    color: #333;
+    font-family: "Markazi Text";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .opinions {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+}

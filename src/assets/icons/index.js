@@ -1,0 +1,1 @@
+export{ReactComponent as Scooter} from "./scooter.svg"

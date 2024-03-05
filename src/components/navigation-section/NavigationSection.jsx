@@ -1,33 +1,33 @@
 import React from "react";
+import "./NavigationSection.scss";
 import logo from "../../assets/images/Logo.svg";
+import { Link } from "react-router-dom";
 
 function NavigationSection() {
   return (
-    <div className="nav-container">
+    <div className="nav-container section-container">
       <div className="logo-container">
         <img src={logo}></img>
       </div>
-      <nav>
-        <ul>
+      <nav className="nav-links">
+        <ul className="list-of-links">
           <li>
-            <a href="/home/">Home</a>
+            <Link to="/home">Home</Link>
           </li>
           <li>
-            <a href="/about/">About</a>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <a href="/menu/">Menu</a>
+            <Link to="/menu">Menu</Link>
           </li>
           <li>
-            <a href="/reservations/">Reservations</a>
+            <Link to="/reservations">Reservations</Link>
           </li>
           <li>
-            {" "}
-            Aw3
-            <a href="/orderOnline/">Order Online</a>
+            <Link to="/orderOnline">Order Online</Link>
           </li>
           <li>
-            <a href="/login/">Login</a>
+            <Link to="/login">Login</Link>
           </li>
         </ul>
       </nav>

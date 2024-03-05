@@ -1,20 +1,27 @@
 import React from "react";
-import "./App.css";
-import NavigationSection from "./components/navigation-section/NavigationSection";
-import HeroSection from "./components/hero-section/HeroSection";
-import HighlightsSection from "./components/highlights-section/HighlightsSection";
-import TestimonialsSection from "./components/testimonials-section/TestimonialsSection";
-import FooterSection from "./components/footer-section/FooterSection";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import "./App.scss";
+import HomePage from "./pages/home-page/HomePage";
+import ReservationPage from "./pages/reservation-page/ReservationPage";
+
+export const ROUTE_PATHS = {
+  HOME: "/home",
+  RESERVATIONS: "/reservations",
+};
+
+export const AppRoutes = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path={ROUTE_PATHS.RESERVATIONS} element={<ReservationPage />} />
+        <Route path={ROUTE_PATHS.HOME} element={<HomePage />} />
+        <Route path="*" element={<Navigate to={ROUTE_PATHS.HOME} />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
 function App() {
-  return (
-    <div>
-      <NavigationSection />
-      <HeroSection />
-      <HighlightsSection />
-      <TestimonialsSection />
-      <FooterSection />
-    </div>
-  );
+  return <AppRoutes />;
 }
 export default App;

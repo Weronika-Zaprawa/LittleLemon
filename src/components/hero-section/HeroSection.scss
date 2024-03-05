@@ -1,0 +1,84 @@
+.hero-container {
+  flex-shrink: 0;
+  background: hsl(160, 13%, 33%);
+  margin-top: 30px;
+  margin-bottom: 100px;
+  .horizontal {
+    display: flex;
+    justify-content: space-between;
+
+    .hero-content-left {
+      flex: 1;
+      margin-bottom: 28;
+      display: flex;
+      flex-direction: column;
+
+      .title {
+        width: 399px;
+        color: #f4ce14;
+        font-family: "Markazi Text";
+        font-size: 56px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-bottom: 14px;
+      }
+      .subtitle {
+        margin: 0px;
+        color: #edefee;
+        font-family: "Markazi Text";
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+      main {
+        margin-bottom: 36px;
+        width: 249px;
+        height: 135px;
+        flex-shrink: 0;
+        p {
+          color: #edefee;
+          font-family: "Karla";
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 140.625%;
+        }
+      }
+      button {
+        margin-bottom: 28px;
+        border: none;
+        background-color: #f4ce14;
+        width: 200px;
+        height: 60px;
+        flex-shrink: 0;
+        border-radius: 20px;
+        color: #333;
+
+        text-align: center;
+        font-family: Karla;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+
+        cursor: pointer;
+      }
+    }
+    .hero-content-right {
+      flex: 1;
+      position: relative;
+      img {
+        object-fit: cover;
+        position: absolute;
+        top: 30px;
+        left: 0px;
+        margin-top: 30px;
+        width: 422px;
+        height: 433px;
+        border-radius: 30px;
+      }
+    }
+  }
+}

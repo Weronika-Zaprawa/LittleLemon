@@ -4,7 +4,6 @@ import ReservationForm from "../../components/reservation-form/ReservationForm";
 import Calendar from "react-calendar";
 import "./Calendar.scss";
 import React, { useState } from "react";
-import ReservationConfirmationModal from "../../components/reservation-confirmation-modal/ReservationConfirmationModal";
 
 function ReservationPage() {
   const [date, setDate] = useState(new Date());
@@ -18,7 +17,6 @@ function ReservationPage() {
           <Calendar onChange={setDate} value={date} />
         </div>
         <ReservationForm />
-        <ReservationConfirmationModal />
       </div>
     </>
   );

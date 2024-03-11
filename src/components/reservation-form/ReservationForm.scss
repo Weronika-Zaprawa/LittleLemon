@@ -3,7 +3,7 @@
   margin-bottom: 32px;
 
   form {
-    width: 100%;
+    width: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,7 +11,7 @@
     .cell-container {
       display: flex;
       flex-direction: column;
-      width: 50%;
+      width: 100%;
       gap: 12px;
 
       label {
@@ -24,7 +24,7 @@
         border-radius: 12px;
         border: none;
         background: #f2f2f2;
-        margin-bottom: 12px;
+
         outline: none;
 
         color: #737875;
@@ -54,7 +54,6 @@
         outline: none;
         border: none;
         background: #f2f2f2;
-        margin-bottom: 12px;
 
         color: #737875;
         font-family: Karla;
@@ -62,17 +61,12 @@
         font-weight: 400;
       }
     }
-    p {
-      color: #141414;
-      font-family: "Markazi Text";
-      font-size: 24px;
-      line-height: 30px; /* 125% */
-      letter-spacing: -0.6px;
-    }
+
     button {
       width: 50%;
       padding: 12px 20px;
       border-radius: 12px;
+      margin-top: 25px;
       border: none;
       background: #475c54;
       color: white;
@@ -83,5 +77,11 @@
       line-height: 24px; /* 150% */
       letter-spacing: 0.24px;
     }
+  }
+  .invalid-feedback {
+    margin-bottom: 12px;
+    padding: 2px;
+    color: red;
+    font-size: small;
   }
 }

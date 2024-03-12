@@ -5,10 +5,19 @@ import * as Yup from "yup";
 import "./ReservationForm.scss";
 import ReservationConfirmationModal from "../reservation-confirmation-modal/ReservationConfirmationModal";
 
-function ReservationForm() {
+function ReservationForm({ date }) {
   const [modalVisibility, setModalVisibility] = useState(false);
-  const handleClick = () => setModalVisibility(true);
-  console.log(modalVisibility);
+  const [reservationInfo, setReservationInfo] = useState({
+    guests: "",
+    occasion: "",
+    requests: "",
+    time: "",
+  });
+
+  const handleClick = (values) => {
+    setReservationInfo(values);
+    setModalVisibility(true);
+  };
 
   const validationSchema = Yup.object().shape({
     time: Yup.string().required("Select time"),
@@ -30,12 +39,7 @@ function ReservationForm() {
 
   return (
     <div className="reservation-form-container">
-      <form
-        onSubmit={handleSubmit(
-          (e) => console.log("sukces 🐶🐶🐶", e),
-          (e) => console.log("są errorki 😽😽😽", e)
-        )}
-      >
+      <form onSubmit={handleSubmit(handleClick)}>
         <div className="cell-container">
           <label htmlFor="time">Select a time</label>
           <select id="time" {...register("time")}>
@@ -91,7 +95,22 @@ function ReservationForm() {
         <button>Reserve now</button>
       </form>
 
-      <div>{modalVisibility ? <ReservationConfirmationModal /> : null}</div>
+      <div>
+        {modalVisibility ? (
+          <ReservationConfirmationModal
+            time={reservationInfo.time}
+            guests={reservationInfo.guests}
+            date={date}
+            occasion={reservationInfo.occasion}
+            request={reservationInfo.requests}
+            onCancel={() => setModalVisibility(false)}
+            onConfirm={() => {
+              setModalVisibility(false);
+              alert("You have successfully booked a table");
+            }}
+          />
+        ) : null}
+      </div>
     </div>
   );
 }

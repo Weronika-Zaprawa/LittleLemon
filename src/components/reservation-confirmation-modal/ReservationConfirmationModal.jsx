@@ -1,7 +1,15 @@
-import { Calendar, Clock, People } from "../../assets/icons";
+import { Calendar, Clock, People, Confetti, Request } from "../../assets/icons";
 import "./ReservationConfirmationModal.scss";
 
-function ReservationConfirmationModal() {
+function ReservationConfirmationModal({
+  date,
+  time,
+  guests,
+  occasion,
+  request,
+  onCancel,
+  onConfirm,
+}) {
   return (
     <>
       <div className="confirmation-background"></div>
@@ -17,7 +25,7 @@ function ReservationConfirmationModal() {
                 <Clock />
               </div>
             </div>
-            <p className="information">Jun 16, 2024</p>
+            <p className="information">{time}</p>
           </div>
           <div className="confirmation-information-container">
             <div className="icon-container">
@@ -25,7 +33,7 @@ function ReservationConfirmationModal() {
                 <Calendar />
               </div>
             </div>
-            <p className="information"> 19:00</p>
+            <p className="information">{date.toLocaleDateString()}</p>
           </div>
           <div className="confirmation-information-container">
             <div className="icon-container">
@@ -33,12 +41,34 @@ function ReservationConfirmationModal() {
                 <People />
               </div>
             </div>
-            <p className="information"> 2 guests</p>
+            <p className="information">{guests} guests</p>
           </div>
+          <div className="confirmation-information-container">
+            <div className="icon-container">
+              <div className="icon">
+                <Confetti />
+              </div>
+            </div>
+            <p className="information">{occasion}</p>
+          </div>
+          {request !== "" && (
+            <div className={"confirmation-information-container"}>
+              <div className="icon-container">
+                <div className="icon">
+                  <Request />
+                </div>
+              </div>
+              <p className="information">{request}</p>
+            </div>
+          )}
         </div>
         <div className="button-container">
-          <button className="cancel-button">CANCEL</button>
-          <button className="confirmation-button">CONFIRM</button>
+          <button className="cancel-button" onClick={onCancel}>
+            CANCEL
+          </button>
+          <button className="confirmation-button" onClick={onConfirm}>
+            CONFIRM
+          </button>
         </div>
       </div>
     </>

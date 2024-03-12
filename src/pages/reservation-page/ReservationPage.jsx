@@ -16,7 +16,7 @@ function ReservationPage() {
         <div className="calendar-container">
           <Calendar onChange={setDate} value={date} />
         </div>
-        <ReservationForm />
+        <ReservationForm date={date} />
       </div>
     </>
   );

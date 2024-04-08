@@ -3,10 +3,11 @@ import NavigationSection from "../../components/navigation-section/NavigationSec
 import ReservationForm from "../../components/reservation-form/ReservationForm";
 import Calendar from "react-calendar";
 import "./Calendar.scss";
-import React, { useState } from "react";
+import React from "react";
+import { useAppContext } from "../../services/AppContext";
 
 function ReservationPage() {
-  const [date, setDate] = useState(new Date());
+  const { date, setDate } = useAppContext();
 
   return (
     <>
@@ -16,7 +17,7 @@ function ReservationPage() {
         <div className="calendar-container">
           <Calendar onChange={setDate} value={date} />
         </div>
-        <ReservationForm date={date} />
+        <ReservationForm />
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import "./NavigationSection.scss";
 import logo from "../../assets/images/Logo.svg";
+import { Basket } from "../../assets/icons";
 import { Link } from "react-router-dom";
 
 function NavigationSection() {
@@ -18,19 +19,20 @@ function NavigationSection() {
             <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/menu">Menu</Link>
+            <Link to="/menu">Menu/Order</Link>
           </li>
           <li>
             <Link to="/reservations">Reservations</Link>
           </li>
-          <li>
-            <Link to="/orderOnline">Order Online</Link>
-          </li>
+
           <li>
             <Link to="/login">Login</Link>
           </li>
         </ul>
       </nav>
+      <div className="logo-container">
+        <Basket />
+      </div>
     </div>
   );
 }

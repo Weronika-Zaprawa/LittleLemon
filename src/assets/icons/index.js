@@ -4,3 +4,8 @@ export { ReactComponent as Clock } from "./clock.svg";
 export { ReactComponent as People } from "./people.svg";
 export { ReactComponent as Confetti } from "./confetti.svg";
 export { ReactComponent as Request } from "./request.svg";
+export { ReactComponent as Plus } from "./plus.svg";
+export { ReactComponent as Plus2 } from "./plus2.svg";
+export { ReactComponent as Minus } from "./minus.svg";
+export { ReactComponent as Cancel } from "./cancel.svg";
+export { ReactComponent as Basket } from "./basket.svg";

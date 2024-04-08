@@ -4,8 +4,18 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import "./ReservationForm.scss";
 import ReservationConfirmationModal from "../reservation-confirmation-modal/ReservationConfirmationModal";
+import { useAppContext } from "../../services/AppContext";
 
-function ReservationForm({ date }) {
+function ReservationForm() {
+  const {
+    times,
+    availableTimes,
+    setAvailableTimes,
+    date,
+    setDate,
+    initializeTimes,
+  } = useAppContext();
+
   const [modalVisibility, setModalVisibility] = useState(false);
   const [reservationInfo, setReservationInfo] = useState({
     guests: "",
@@ -42,16 +52,22 @@ function ReservationForm({ date }) {
       <form onSubmit={handleSubmit(handleClick)}>
         <div className="cell-container">
           <label htmlFor="time">Select a time</label>
-          <select id="time" {...register("time")}>
-            <option value="" disabled selected>
+          <select id="time" {...register("time")} defaultValue={""}>
+            <option value="" disabled>
               Select a time
             </option>
-            <option>17:00</option>
-            <option>18:00</option>
-            <option>19:00</option>
-            <option>20:00</option>
-            <option>21:00</option>
-            <option>22:00</option>
+            {availableTimes
+              .filter(
+                (time) =>
+                  !time.bookedOnDays.some(
+                    (day) => day === date.toLocaleDateString()
+                  )
+              )
+              .map((time) => (
+                <option value={time.hour} key={time.hour}>
+                  {time.hour}
+                </option>
+              ))}
           </select>
           <div className="invalid-feedback">{errors.time?.message}</div>
         </div>
@@ -71,8 +87,8 @@ function ReservationForm({ date }) {
         </div>
         <div className="cell-container">
           <label htmlFor="occasion">Occasion</label>
-          <select id="occasion" {...register("occasion")}>
-            <option value="" disabled selected>
+          <select id="occasion" {...register("occasion")} defaultValue={""}>
+            <option value="" disabled>
               Select an occasion
             </option>
             <option>Meeting</option>
@@ -105,6 +121,11 @@ function ReservationForm({ date }) {
             request={reservationInfo.requests}
             onCancel={() => setModalVisibility(false)}
             onConfirm={() => {
+              setAvailableTimes({
+                type: "book_table",
+                hour: reservationInfo.time,
+                date: date.toLocaleDateString(),
+              });
               setModalVisibility(false);
               alert("You have successfully booked a table");
             }}

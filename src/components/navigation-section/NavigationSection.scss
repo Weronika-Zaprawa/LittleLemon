@@ -1,14 +1,35 @@
 .nav-container {
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
+  gap: 30px;
   .logo-container {
     margin-top: 22px;
     height: 71px;
     display: flex;
     cursor: pointer;
+    flex-direction: row-reverse;
+
+    .numberOfDishes {
+      position: absolute;
+      margin-right: -15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f4ce14;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-weight: 700;
+
+      &.zero {
+        display: none;
+      }
+    }
   }
   .nav-links {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
     .list-of-links {
       margin-top: 44px;
       list-style-type: none;

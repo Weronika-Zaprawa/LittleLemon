@@ -16,6 +16,11 @@ import {
 
 function MenuPage() {
   const [modalVisibility, setModalVisibility] = useState(false);
+  const [dishName, setDishName] = useState("");
+  const [dishDescription, setDishDescription] = useState("");
+  const [dishPrice, setDishPrice] = useState("");
+  const [sectionType, setSectionType] = useState("");
+  const [numberOfItemsInBasket, setNumberOfItemsInBasket] = useState(0);
 
   return (
     <>
@@ -32,8 +37,14 @@ function MenuPage() {
                 dish={dish.dish}
                 description={dish.description}
                 price={dish.price}
+                numberOfItemsInBasket={dish.numberOfItemsInBasket}
                 onOpen={() => {
                   setModalVisibility(true);
+                  setDishName(dish.dish);
+                  setDishDescription(dish.description);
+                  setDishPrice(dish.price);
+                  setNumberOfItemsInBasket(dish.numberOfItemsInBasket);
+                  setSectionType("Antipasti");
                 }}
               />
             ))}
@@ -47,8 +58,14 @@ function MenuPage() {
                 dish={dish.dish}
                 description={dish.description}
                 price={dish.price}
+                numberOfItemsInBasket={dish.numberOfItemsInBasket}
                 onOpen={() => {
                   setModalVisibility(true);
+                  setDishName(dish.dish);
+                  setDishDescription(dish.description);
+                  setDishPrice(dish.price);
+                  setNumberOfItemsInBasket(dish.numberOfItemsInBasket);
+                  setSectionType("MainCourse");
                 }}
               />
             ))}
@@ -65,8 +82,14 @@ function MenuPage() {
                 dish={dish.dish}
                 description={dish.description}
                 price={dish.price}
+                numberOfItemsInBasket={dish.numberOfItemsInBasket}
                 onOpen={() => {
                   setModalVisibility(true);
+                  setDishName(dish.dish);
+                  setDishDescription(dish.description);
+                  setDishPrice(dish.price);
+                  setNumberOfItemsInBasket(dish.numberOfItemsInBasket);
+                  setSectionType("Desserts");
                 }}
               />
             ))}
@@ -81,8 +104,14 @@ function MenuPage() {
                 dish={dish.dish}
                 description={dish.description}
                 price={dish.price}
+                numberOfItemsInBasket={dish.numberOfItemsInBasket}
                 onOpen={() => {
                   setModalVisibility(true);
+                  setDishName(dish.dish);
+                  setDishDescription(dish.description);
+                  setDishPrice(dish.price);
+                  setNumberOfItemsInBasket(dish.numberOfItemsInBasket);
+                  setSectionType("Cocktails");
                 }}
               />
             ))}
@@ -94,6 +123,11 @@ function MenuPage() {
             onCancel={() => {
               setModalVisibility(false);
             }}
+            dishName={dishName}
+            dishDescription={dishDescription}
+            dishPrice={dishPrice}
+            sectionType={sectionType}
+            numberOfItemsInBasket={numberOfItemsInBasket}
           />
         ) : null}
       </div>

@@ -1,4 +1,16 @@
-import React, { createContext, useContext, useReducer, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
+import {
+  menuSectionAntipasti,
+  menuSectionMainCourse,
+  menuSectionDesserts,
+  menuSectionCocktails,
+} from "../pages/menu-page/MenuPositions";
 
 export const AppContext = createContext();
 
@@ -36,6 +48,67 @@ export const AppProvider = ({ children }) => {
     return times;
   }
 
+  const [sectionAntipasti, setSectionAntipasti] =
+    useState(menuSectionAntipasti);
+  const [sectionMainCourse, setSectionMainCourse] = useState(
+    menuSectionMainCourse
+  );
+  const [sectionDesserts, setSectionDesserts] = useState(menuSectionDesserts);
+  const [sectionCocktails, setSectionCocktails] =
+    useState(menuSectionCocktails);
+
+  const findSection = (sectionType, dishName, number) => {
+    switch (sectionType) {
+      case "Antipasti":
+        setSectionAntipasti((prev) => {
+          const index = prev.findIndex((dish) => dish.dish === dishName); //Szukamy w tablicy indexu obiektu
+          prev[index].numberOfItemsInBasket = number; // Przypisujemy wartość number do odpowiedniego numberOfItemsInBasket
+          return [...prev]; // Zwraca zaktualizowaną całą tablicę. Dodajemy ... po to aby
+          //stworzyć "nową tablicę". Porównywanie tablic i obiektów odbywa się poprzez wskazanie na miejsce w pamięci
+        });
+        break;
+      case "MainCourse":
+        setSectionMainCourse((prev) => {
+          const index = prev.findIndex((dish) => dish.dish === dishName);
+          prev[index].numberOfItemsInBasket = number;
+          return [...prev];
+        });
+        break;
+      case "Desserts":
+        setSectionDesserts((prev) => {
+          const index = prev.findIndex((dish) => dish.dish === dishName);
+          prev[index].numberOfItemsInBasket = number;
+          return [...prev];
+        });
+        break;
+      case "Cocktails":
+        setSectionCocktails((prev) => {
+          const index = prev.findIndex((dish) => dish.dish === dishName);
+          prev[index].numberOfItemsInBasket = number;
+          return [...prev];
+        });
+        break;
+    }
+  };
+
+  const numberOfAddedDishes = [
+    ...sectionAntipasti,
+    ...sectionMainCourse,
+    ...sectionDesserts,
+    ...sectionCocktails,
+  ].reduce((previousScore, currentScore) => {
+    return previousScore + currentScore.numberOfItemsInBasket;
+  }, 0);
+
+  const yourCard = [
+    ...sectionAntipasti,
+    ...sectionMainCourse,
+    ...sectionDesserts,
+    ...sectionCocktails,
+  ].filter((dish) => dish.numberOfItemsInBasket > 0);
+
+  console.log(yourCard);
+
   return (
     <AppContext.Provider
       value={{
@@ -46,6 +119,17 @@ export const AppProvider = ({ children }) => {
         setDate,
         initializeTimes,
         updateTimes,
+        numberOfAddedDishes,
+        sectionAntipasti,
+        setSectionAntipasti,
+        sectionMainCourse,
+        setSectionMainCourse,
+        sectionDesserts,
+        setSectionDesserts,
+        sectionCocktails,
+        setSectionCocktails,
+        yourCard,
+        findSection,
       }}
     >
       {children}

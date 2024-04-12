@@ -3,8 +3,10 @@ import "./NavigationSection.scss";
 import logo from "../../assets/images/Logo.svg";
 import { Basket } from "../../assets/icons";
 import { Link } from "react-router-dom";
+import { useAppContext } from "../../services/AppContext";
 
 function NavigationSection() {
+  const { numberOfAddedDishes } = useAppContext();
   return (
     <div className="nav-container section-container">
       <div className="logo-container">
@@ -29,10 +31,18 @@ function NavigationSection() {
             <Link to="/login">Login</Link>
           </li>
         </ul>
+
+        <Link to="/basket" className="logo-container">
+          <Basket />
+          <div
+            className={
+              "numberOfDishes " + (numberOfAddedDishes === 0 ? "zero" : "")
+            }
+          >
+            {numberOfAddedDishes}
+          </div>
+        </Link>
       </nav>
-      <div className="logo-container">
-        <Basket />
-      </div>
     </div>
   );
 }

@@ -109,6 +109,14 @@ export const AppProvider = ({ children }) => {
 
   console.log(yourCard);
 
+  const summaryPrice = yourCard.reduce((previousScore, currentScore) => {
+    return (
+      previousScore + currentScore.numberOfItemsInBasket * currentScore.price
+    );
+  }, 0);
+
+  console.log(summaryPrice);
+
   return (
     <AppContext.Provider
       value={{
@@ -130,6 +138,7 @@ export const AppProvider = ({ children }) => {
         setSectionCocktails,
         yourCard,
         findSection,
+        summaryPrice,
       }}
     >
       {children}

@@ -29,6 +29,7 @@
       font-size: 30px;
       font-weight: 500;
       cursor: pointer;
+      text-align: center;
     }
 
     .content-container {
@@ -115,6 +116,8 @@
         }
       }
       .add-button {
+        display: flex;
+        justify-content: center;
         margin: auto;
         margin-bottom: 50px;
         padding: 16px;

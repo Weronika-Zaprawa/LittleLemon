@@ -26,6 +26,7 @@ export const AppRoutes = () => {
           <Route path={ROUTE_PATHS.HOME} element={<HomePage />} />
           <Route path={ROUTE_PATHS.MENU} element={<MenuPage />} />
           <Route path={ROUTE_PATHS.BASKET} element={<BasketPage />} />
+
           <Route path="*" element={<Navigate to={ROUTE_PATHS.HOME} />} />
         </Routes>
       </BrowserRouter>

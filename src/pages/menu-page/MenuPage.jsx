@@ -7,12 +7,7 @@ import aperol from "../../assets/images/aperol6.jpg";
 import MenuSection from "../../components/menu-section/MenuSection";
 import OrderElementConfigModal from "../../components/order-element-config-modal/OrderElementConfigModal";
 import { useState } from "react";
-import {
-  menuSectionAntipasti,
-  menuSectionMainCourse,
-  menuSectionDesserts,
-  menuSectionCocktails,
-} from "./MenuPositions";
+import { useAppContext } from "../../services/AppContext";
 
 function MenuPage() {
   const [modalVisibility, setModalVisibility] = useState(false);
@@ -21,6 +16,13 @@ function MenuPage() {
   const [dishPrice, setDishPrice] = useState("");
   const [sectionType, setSectionType] = useState("");
   const [numberOfItemsInBasket, setNumberOfItemsInBasket] = useState(0);
+
+  const {
+    sectionAntipasti,
+    sectionMainCourse,
+    sectionCocktails,
+    sectionDesserts,
+  } = useAppContext();
 
   return (
     <>
@@ -32,7 +34,7 @@ function MenuPage() {
           <img src={salad} alt="salad"></img>
           <div className="menu-section-right">
             <p className="name-menu-section">Antipasti</p>
-            {menuSectionAntipasti.map((dish) => (
+            {sectionAntipasti.map((dish) => (
               <MenuSection
                 dish={dish.dish}
                 description={dish.description}
@@ -53,7 +55,7 @@ function MenuPage() {
         <div className="row">
           <div className="menu-section-right">
             <p className="name-menu-section">Main Course</p>
-            {menuSectionMainCourse.map((dish) => (
+            {sectionMainCourse.map((dish) => (
               <MenuSection
                 dish={dish.dish}
                 description={dish.description}
@@ -77,7 +79,7 @@ function MenuPage() {
           <img src={cake} alt="cake"></img>
           <div className="menu-section-right">
             <p className="name-menu-section">Desserts</p>
-            {menuSectionDesserts.map((dish) => (
+            {sectionDesserts.map((dish) => (
               <MenuSection
                 dish={dish.dish}
                 description={dish.description}
@@ -99,7 +101,7 @@ function MenuPage() {
         <div className="row">
           <div className="menu-section-right">
             <p className="name-menu-section">Cocktails</p>
-            {menuSectionCocktails.map((dish) => (
+            {sectionCocktails.map((dish) => (
               <MenuSection
                 dish={dish.dish}
                 description={dish.description}

@@ -1,8 +1,10 @@
 import "./DeliveryDetailsModal.scss";
 import React from "react";
-import { Cancel, Plus } from "../../assets/icons";
+import { Cancel } from "../../assets/icons";
+import { useAppContext } from "../../services/AppContext";
 
 function DeliveryDetailsModal({ onCancel }) {
+  const { yourCard, resetSections } = useAppContext();
   return (
     <>
       <div className="delivery-details-background"></div>
@@ -81,14 +83,24 @@ function DeliveryDetailsModal({ onCancel }) {
           </div>
         </form>
         <div className="order-summary">
-          Order Summary
-          <div className="row">
-            <div className="icon">1</div>
-            <div className="dish-name"> Ceaser Salad</div>
-            <div className="dish-price">$13</div>
-          </div>
-          <p>Cash on delivery</p>
-          <button>Order</button>
+          <p className="summary">Order Summary</p>
+          {yourCard.map((dish) => (
+            <div className="row">
+              <div className="icon">{dish.numberOfItemsInBasket}</div>
+              <div className="dish-name">{dish.dish}</div>
+              <div className="dish-price">${dish.price}</div>
+            </div>
+          ))}
+          <p className="delivery">Cash on delivery</p>
+          <button
+            onClick={() => {
+              onCancel();
+              alert("Order placed");
+              resetSections();
+            }}
+          >
+            Order
+          </button>
         </div>
       </div>
     </>

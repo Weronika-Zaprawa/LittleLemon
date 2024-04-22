@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
+import React, { createContext, useContext, useReducer, useState } from "react";
 import {
   menuSectionAntipasti,
   menuSectionMainCourse,
@@ -48,14 +42,18 @@ export const AppProvider = ({ children }) => {
     return times;
   }
 
-  const [sectionAntipasti, setSectionAntipasti] =
-    useState(menuSectionAntipasti);
-  const [sectionMainCourse, setSectionMainCourse] = useState(
-    menuSectionMainCourse
+  const [sectionAntipasti, setSectionAntipasti] = useState(
+    JSON.parse(JSON.stringify(menuSectionAntipasti))
   );
-  const [sectionDesserts, setSectionDesserts] = useState(menuSectionDesserts);
-  const [sectionCocktails, setSectionCocktails] =
-    useState(menuSectionCocktails);
+  const [sectionMainCourse, setSectionMainCourse] = useState(
+    JSON.parse(JSON.stringify(menuSectionMainCourse))
+  );
+  const [sectionDesserts, setSectionDesserts] = useState(
+    JSON.parse(JSON.stringify(menuSectionDesserts))
+  );
+  const [sectionCocktails, setSectionCocktails] = useState(
+    JSON.parse(JSON.stringify(menuSectionCocktails))
+  );
 
   const findSection = (sectionType, dishName, number) => {
     switch (sectionType) {
@@ -107,15 +105,18 @@ export const AppProvider = ({ children }) => {
     ...sectionCocktails,
   ].filter((dish) => dish.numberOfItemsInBasket > 0);
 
-  console.log(yourCard);
-
   const summaryPrice = yourCard.reduce((previousScore, currentScore) => {
     return (
       previousScore + currentScore.numberOfItemsInBasket * currentScore.price
     );
   }, 0);
 
-  console.log(summaryPrice);
+  function resetSections() {
+    setSectionAntipasti(menuSectionAntipasti);
+    setSectionMainCourse(menuSectionMainCourse);
+    setSectionDesserts(menuSectionDesserts);
+    setSectionCocktails(menuSectionCocktails);
+  }
 
   return (
     <AppContext.Provider
@@ -139,6 +140,7 @@ export const AppProvider = ({ children }) => {
         yourCard,
         findSection,
         summaryPrice,
+        resetSections,
       }}
     >
       {children}

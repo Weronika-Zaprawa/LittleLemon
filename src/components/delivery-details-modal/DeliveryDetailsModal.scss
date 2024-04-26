@@ -104,7 +104,7 @@
     }
   }
   .order-summary {
-    margin-top: 50px;
+    margin-top: 20px;
     .summary {
       margin-top: 0px;
       color: #000;
@@ -172,5 +172,11 @@
       font-size: 20px;
       font-weight: 700;
     }
+  }
+  .invalid-feedback {
+    //margin-bottom: 12px;
+    padding: 2px;
+    color: red;
+    font-size: small;
   }
 }

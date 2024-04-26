@@ -26,10 +26,6 @@ function NavigationSection() {
           <li>
             <Link to="/reservations">Reservations</Link>
           </li>
-
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
         </ul>
 
         <Link to="/basket" className="logo-container">

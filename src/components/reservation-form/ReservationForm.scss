@@ -91,3 +91,11 @@
     font-size: small;
   }
 }
+
+@media (max-width: 370px) {
+  .reservation-form-container {
+    form {
+      width: 100%;
+    }
+  }
+}

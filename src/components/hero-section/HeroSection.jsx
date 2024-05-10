@@ -1,6 +1,9 @@
 import "./HeroSection.scss";
 import food from "../../assets/images/restauranfood.jpg";
+import { ROUTE_PATHS } from "../../App";
+import { useNavigate } from "react-router-dom";
 function HeroSection() {
+  const navigate = useNavigate();
   return (
     <div className="hero-container section-container">
       <div className="horizontal">
@@ -13,7 +16,13 @@ function HeroSection() {
               traditional recipes served with a modern twist.
             </p>
           </main>
-          <button>Reserve a Table</button>
+          <button
+            onClick={() => {
+              navigate(ROUTE_PATHS.RESERVATIONS);
+            }}
+          >
+            Reserve a Table
+          </button>
         </div>
         <div className="hero-content-right">
           <img src={food}></img>

@@ -1,11 +1,13 @@
 import "./BasketPage.scss";
 import React, { useState } from "react";
+import MediaQuery from "react-responsive";
 import NavigationSection from "../../components/navigation-section/NavigationSection";
 import { Plus2, Minus } from "../../assets/icons";
 import { useAppContext } from "../../services/AppContext";
 import { ROUTE_PATHS } from "../../App";
 import { useNavigate } from "react-router-dom";
 import DeliveryDetailsModal from "../../components/delivery-details-modal/DeliveryDetailsModal";
+import MobileNavigationSection from "../../components/mobile-navigation-section/MobileNavigationSection";
 
 function BasketPage() {
   const { yourCard, findSection, summaryPrice } = useAppContext();
@@ -15,7 +17,11 @@ function BasketPage() {
 
   return (
     <>
-      <NavigationSection />
+      <MediaQuery maxWidth={970}>
+        {(matches) =>
+          matches ? <MobileNavigationSection /> : <NavigationSection />
+        }
+      </MediaQuery>
       <div className="basket-page-container">
         <h1>your cart</h1>
         <div className="basket-modal">

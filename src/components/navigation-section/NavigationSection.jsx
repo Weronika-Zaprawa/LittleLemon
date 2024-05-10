@@ -18,7 +18,17 @@ function NavigationSection() {
             <Link to="/home">Home</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link
+              onClick={() => {
+                const aboutSection = document.getElementById("about");
+                aboutSection.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }}
+            >
+              About
+            </Link>
           </li>
           <li>
             <Link to="/menu">Menu/Order</Link>

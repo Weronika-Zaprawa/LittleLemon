@@ -159,3 +159,9 @@ abbr[title] {
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
 }
+
+@media (max-width: 370px) {
+  .react-calendar {
+    width: 70vw;
+  }
+}

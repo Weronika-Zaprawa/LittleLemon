@@ -21,7 +21,7 @@ function FooterSection() {
         <ul>
           <li className="heading">Contact</li>
           <li className="info">Adres</li>
-          <li className="info">Phone Number</li>
+          <li className="info">Phone</li>
           <li className="info">Email</li>
         </ul>
       </div>
@@ -29,7 +29,7 @@ function FooterSection() {
         <ul>
           <li className="heading">Social Media Links</li>
           <li className="info">Adres</li>
-          <li className="info">Phone Number</li>
+          <li className="info">Phone</li>
           <li className="info">Email</li>
         </ul>
       </div>

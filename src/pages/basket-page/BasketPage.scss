@@ -136,3 +136,16 @@
     }
   }
 }
+
+@media (max-width: 1260px) {
+  .basket-page-container {
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
+}
+@media (max-width: 970px) {
+  .basket-page-container {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+}

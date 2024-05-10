@@ -104,6 +104,8 @@
     }
   }
   .order-summary {
+    display: flex;
+    flex-direction: column;
     margin-top: 20px;
     .summary {
       margin-top: 0px;
@@ -178,5 +180,19 @@
     padding: 2px;
     color: red;
     font-size: small;
+  }
+}
+
+@media (max-width: 540px) {
+  .delivery-details-modal-container {
+    width: 70vw;
+
+    .delivery-form {
+      .form-top-row {
+        gap: 25px;
+        display: flex;
+        flex-direction: column;
+      }
+    }
   }
 }

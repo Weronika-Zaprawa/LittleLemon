@@ -1,4 +1,5 @@
 import "./MenuPage.scss";
+import MediaQuery from "react-responsive";
 import NavigationSection from "../../components/navigation-section/NavigationSection";
 import salad from "../../assets/images/salad.jpg";
 import pasta from "../../assets/images/pasta1.jpg";
@@ -8,6 +9,7 @@ import MenuSection from "../../components/menu-section/MenuSection";
 import OrderElementConfigModal from "../../components/order-element-config-modal/OrderElementConfigModal";
 import { useState } from "react";
 import { useAppContext } from "../../services/AppContext";
+import MobileNavigationSection from "../../components/mobile-navigation-section/MobileNavigationSection";
 
 function MenuPage() {
   const [modalVisibility, setModalVisibility] = useState(false);
@@ -26,7 +28,11 @@ function MenuPage() {
 
   return (
     <>
-      <NavigationSection />
+      <MediaQuery maxWidth={970}>
+        {(matches) =>
+          matches ? <MobileNavigationSection /> : <NavigationSection />
+        }
+      </MediaQuery>
       <div className="menu-page-container">
         <h1>MENU</h1>
         <h2>See what we offer</h2>

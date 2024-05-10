@@ -2,7 +2,7 @@ import "./AboutSection.scss";
 import restaurant from "../../assets/images/restaurant.jpg";
 function AboutSection() {
   return (
-    <div className="about-container section-container">
+    <div className="about-container section-container" id="about">
       <div className="restaurant-description">
         <header>Little Lemon</header>
         <h2>Chicago</h2>

@@ -17,6 +17,7 @@
     font-size: 40px;
     margin-top: 0px;
   }
+
   .row {
     display: flex;
     flex-direction: row;
@@ -24,19 +25,13 @@
 
     img {
       margin-top: 50px;
-      width: 430px;
       height: 430px;
-      //border-radius: 50%;
       object-fit: contain;
-      //object-position: 50% 15%;
     }
     .cocktails-img {
       margin-top: 50px;
-      width: 500px;
       height: 500px;
-      //border-radius: 50%;
       object-fit: contain;
-      //object-position: 50% 15%;
     }
     .menu-section-right {
       display: flex;
@@ -51,6 +46,96 @@
         font-weight: 700;
         line-height: normal;
         text-transform: capitalize;
+      }
+    }
+    .row-reverse {
+      display: flex;
+      flex-direction: row;
+      gap: 137px;
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .menu-page-container {
+    .row {
+      gap: 50px;
+    }
+  }
+}
+
+@media (max-width: 860px) {
+  .menu-page-container {
+    .row {
+      gap: 25px;
+    }
+  }
+}
+
+@media (max-width: 840px) {
+  .menu-page-container {
+    .row {
+      gap: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-items: center;
+
+      &:nth-child(2n + 1) {
+        flex-direction: column-reverse;
+      }
+
+      img {
+        margin-top: 0px;
+        height: 430px;
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .menu-page-container {
+    .row {
+      gap: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-items: center;
+
+      &:nth-child(2n + 1) {
+        flex-direction: column-reverse;
+      }
+
+      img {
+        margin-top: 0px;
+        height: 330px;
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  .menu-page-container {
+    .row {
+      gap: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-items: center;
+
+      &:nth-child(2n + 1) {
+        flex-direction: column-reverse;
+      }
+
+      img {
+        margin-top: 0px;
+        height: 330px;
+        object-fit: contain;
+      }
+      .menu-section-right {
+        width: 238px;
       }
     }
   }

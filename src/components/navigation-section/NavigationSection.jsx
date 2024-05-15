@@ -4,13 +4,21 @@ import logo from "../../assets/images/Logo.svg";
 import { Basket } from "../../assets/icons";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../../services/AppContext";
+import { ROUTE_PATHS } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 function NavigationSection() {
   const { numberOfAddedDishes } = useAppContext();
+  const navigate = useNavigate();
   return (
     <div className="nav-container section-container">
       <div className="logo-container">
-        <img src={logo}></img>
+        <img
+          src={logo}
+          onClick={() => {
+            navigate(ROUTE_PATHS.HOME);
+          }}
+        ></img>
       </div>
       <nav className="nav-links">
         <ul className="list-of-links">

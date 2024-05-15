@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AppProvider } from "./services/AppContext";
 import "./App.scss";
 import HomePage from "./pages/home-page/HomePage";
@@ -16,25 +16,25 @@ export const ROUTE_PATHS = {
 
 export const AppRoutes = () => {
   return (
-    <AppProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path={ROUTE_PATHS.RESERVATIONS}
-            element={<ReservationPage />}
-          />
-          <Route path={ROUTE_PATHS.HOME} element={<HomePage />} />
-          <Route path={ROUTE_PATHS.MENU} element={<MenuPage />} />
-          <Route path={ROUTE_PATHS.BASKET} element={<BasketPage />} />
+    <Routes>
+      <Route path={ROUTE_PATHS.RESERVATIONS} element={<ReservationPage />} />
+      <Route path={ROUTE_PATHS.HOME} element={<HomePage />} />
+      <Route path={ROUTE_PATHS.MENU} element={<MenuPage />} />
+      <Route path={ROUTE_PATHS.BASKET} element={<BasketPage />} />
 
-          <Route path="*" element={<Navigate to={ROUTE_PATHS.HOME} />} />
-        </Routes>
-      </BrowserRouter>
-    </AppProvider>
+      <Route path="*" element={<Navigate to={ROUTE_PATHS.HOME} />} />
+    </Routes>
   );
 };
 
 function App() {
+  const location = useLocation();
+
+  console.log(location);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
   return <AppRoutes />;
 }
 export default App;

@@ -104,6 +104,7 @@ export const AppProvider = ({ children }) => {
     ...sectionDesserts,
     ...sectionCocktails,
   ].filter((dish) => dish.numberOfItemsInBasket > 0);
+  console.log(yourCard);
 
   const summaryPrice = yourCard.reduce((previousScore, currentScore) => {
     return (

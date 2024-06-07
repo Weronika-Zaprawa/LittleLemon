@@ -8,5 +8,6 @@ export { ReactComponent as Plus } from "./plus.svg";
 export { ReactComponent as Plus2 } from "./plus2.svg";
 export { ReactComponent as Minus } from "./minus.svg";
 export { ReactComponent as Cancel } from "./cancel.svg";
+export { ReactComponent as CancelWhite } from "./cancelw.svg";
 export { ReactComponent as Basket } from "./basket.svg";
-export { ReactComponent as HamburgerMenu } from "./hamburger-menu.svg";
+export { ReactComponent as HamburgerMenuIcon } from "./hamburger-menu.svg";

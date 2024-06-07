@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Scooter } from "../../assets/icons";
 import OrderElementConfigModal from "../order-element-config-modal/OrderElementConfigModal";
 import { useAppContext } from "../../services/AppContext";
+
 function SpecialsCards({
   photo,
   dishName,
@@ -10,8 +11,11 @@ function SpecialsCards({
   dishDescription,
   numberOfItemsInBasket,
   sectionType,
+  description,
+  idDish,
 }) {
   const [modalVisibility, setModalVisibility] = useState(false);
+
   return (
     <div className="card">
       <div className="photo">
@@ -44,7 +48,9 @@ function SpecialsCards({
           dishName={dishName}
           dishPrice={price}
           numberOfItemsInBasket={numberOfItemsInBasket}
+          dishDescription={description}
           sectionType={sectionType}
+          idDish={idDish}
         />
       ) : null}
     </div>

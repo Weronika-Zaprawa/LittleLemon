@@ -3,6 +3,18 @@
   flex-direction: row;
   justify-content: space-between;
   gap: 15px;
+  background-color: white;
+  position: relative;
+  transition: top 0.3s;
+
+  &.visible {
+    position: sticky;
+    top: 0px;
+  }
+  &.hidden {
+    position: sticky;
+    top: -100px;
+  }
 
   @media (max-width: 430px) {
     img {

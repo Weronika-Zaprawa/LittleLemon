@@ -10,7 +10,7 @@ import DeliveryDetailsModal from "../../components/delivery-details-modal/Delive
 import MobileNavigationSection from "../../components/mobile-navigation-section/MobileNavigationSection";
 
 function BasketPage() {
-  const { yourCard, findSection, summaryPrice } = useAppContext();
+  const { yourCard, findSection, summaryPrice, addCard } = useAppContext();
   const navigate = useNavigate();
 
   const [deliveryModalDisplay, setDeliveryModalDisplay] = useState(false);
@@ -48,6 +48,7 @@ function BasketPage() {
                     <div
                       className="number-change"
                       onClick={() => {
+                        addCard(dish.id, dish.numberOfItemsInBasket - 1);
                         findSection(
                           dish.sectionType,
                           dish.dish,
@@ -61,6 +62,7 @@ function BasketPage() {
                     <div
                       className="number-change"
                       onClick={() => {
+                        addCard(dish.id, dish.numberOfItemsInBasket + 1);
                         findSection(
                           dish.sectionType,
                           dish.dish,

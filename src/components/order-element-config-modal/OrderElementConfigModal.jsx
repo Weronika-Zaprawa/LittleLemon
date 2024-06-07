@@ -10,6 +10,7 @@ function OrderElementConfigModal({
   dishPrice,
   sectionType,
   numberOfItemsInBasket,
+  idDish,
 }) {
   const {
     setSectionAntipasti,
@@ -17,6 +18,7 @@ function OrderElementConfigModal({
     setSectionDesserts,
     setSectionCocktails,
     findSection,
+    addCard,
   } = useAppContext();
 
   const [number, setNumber] = useState(numberOfItemsInBasket);
@@ -55,6 +57,7 @@ function OrderElementConfigModal({
         <button
           className="add-button"
           onClick={() => {
+            addCard(idDish, number);
             onCancel();
             findSection(sectionType, dishName, number);
           }}

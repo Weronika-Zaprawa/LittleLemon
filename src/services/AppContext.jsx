@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useReducer, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import {
   menuSectionAntipasti,
   menuSectionMainCourse,
@@ -24,6 +30,68 @@ export const AppProvider = ({ children }) => {
   );
 
   const [date, setDate] = useState(new Date());
+  const [sectionAntipasti, setSectionAntipasti] = useState([]);
+  const [sectionMainCourse, setSectionMainCourse] = useState([]);
+  const [sectionDesserts, setSectionDesserts] = useState([]);
+  const [sectionCocktails, setSectionCocktails] = useState([]);
+  const [loadingMenu, setLoadingMenu] = useState(true);
+
+  const [idDish, setIdDish] = useState();
+
+  const link = "https://littlelemonapi.onrender.com";
+
+  async function getMenu() {
+    const response = await fetch(link + "/menu", {
+      headers: {
+        type: "applications/json",
+      },
+      credentials: "include",
+    });
+
+    if (response.ok === true) {
+      const responseMenu = await response.json();
+
+      setSectionAntipasti(
+        responseMenu.filter((dish) => {
+          return dish.sectionType === "Antipasti";
+        })
+      );
+      setSectionMainCourse(
+        responseMenu.filter((dish) => {
+          return dish.sectionType === "MainCourse";
+        })
+      );
+      setSectionDesserts(
+        responseMenu.filter((dish) => {
+          return dish.sectionType === "Desserts";
+        })
+      );
+      setSectionCocktails(
+        responseMenu.filter((dish) => {
+          return dish.sectionType === "Cocktails";
+        })
+      );
+      setLoadingMenu(false);
+    } else {
+      alert("Failed to load menu");
+    }
+  }
+
+  async function addCard(id, quantity) {
+    return fetch(link + "/card-update", {
+      method: "PUT",
+      body: JSON.stringify({
+        menuItemId: id,
+        numberOfItemsInBasket: quantity,
+      }),
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    });
+  }
+
+  useEffect(() => {
+    getMenu();
+  }, []);
 
   function updateTimes(state, action) {
     switch (action.type) {
@@ -41,19 +109,6 @@ export const AppProvider = ({ children }) => {
   function initializeTimes() {
     return times;
   }
-
-  const [sectionAntipasti, setSectionAntipasti] = useState(
-    JSON.parse(JSON.stringify(menuSectionAntipasti))
-  );
-  const [sectionMainCourse, setSectionMainCourse] = useState(
-    JSON.parse(JSON.stringify(menuSectionMainCourse))
-  );
-  const [sectionDesserts, setSectionDesserts] = useState(
-    JSON.parse(JSON.stringify(menuSectionDesserts))
-  );
-  const [sectionCocktails, setSectionCocktails] = useState(
-    JSON.parse(JSON.stringify(menuSectionCocktails))
-  );
 
   const findSection = (sectionType, dishName, number) => {
     switch (sectionType) {
@@ -104,20 +159,12 @@ export const AppProvider = ({ children }) => {
     ...sectionDesserts,
     ...sectionCocktails,
   ].filter((dish) => dish.numberOfItemsInBasket > 0);
-  console.log(yourCard);
 
   const summaryPrice = yourCard.reduce((previousScore, currentScore) => {
     return (
       previousScore + currentScore.numberOfItemsInBasket * currentScore.price
     );
   }, 0);
-
-  function resetSections() {
-    setSectionAntipasti(menuSectionAntipasti);
-    setSectionMainCourse(menuSectionMainCourse);
-    setSectionDesserts(menuSectionDesserts);
-    setSectionCocktails(menuSectionCocktails);
-  }
 
   return (
     <AppContext.Provider
@@ -141,7 +188,11 @@ export const AppProvider = ({ children }) => {
         yourCard,
         findSection,
         summaryPrice,
-        resetSections,
+        getMenu,
+        addCard,
+        loadingMenu,
+        idDish,
+        setIdDish,
       }}
     >
       {children}

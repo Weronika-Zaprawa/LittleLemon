@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import { AppProvider } from "./services/AppContext";
 import "./App.scss";
 import HomePage from "./pages/home-page/HomePage";
 import ReservationPage from "./pages/reservation-page/ReservationPage";
@@ -29,8 +28,6 @@ export const AppRoutes = () => {
 
 function App() {
   const location = useLocation();
-
-  console.log(location);
 
   useEffect(() => {
     window.scrollTo(0, 0);

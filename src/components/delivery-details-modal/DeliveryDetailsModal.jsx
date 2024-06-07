@@ -7,7 +7,7 @@ import { Cancel } from "../../assets/icons";
 import { useAppContext } from "../../services/AppContext";
 
 function DeliveryDetailsModal({ onCancel }) {
-  const { yourCard, resetSections } = useAppContext();
+  const { yourCard, addCard, getMenu } = useAppContext();
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Enter your name"),
@@ -42,11 +42,18 @@ function DeliveryDetailsModal({ onCancel }) {
           </div>
         </div>
         <form
-          onSubmit={handleSubmit((data) => {
-            console.log(data);
+          onSubmit={handleSubmit(async (data) => {
+            //pojedynczo
+            // for (const dish of yourCard) {
+            //   await addCard(dish.id, 0);
+            // }
+            // getMenu();
+            //wszystkie na raz
+            const promises = yourCard.map((dish) => addCard(dish.id, 0));
+            await Promise.all(promises);
+            getMenu();
             onCancel();
             alert("Order placed");
-            resetSections();
           })}
           className="delivery-form"
         >

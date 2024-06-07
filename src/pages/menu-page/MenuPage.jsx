@@ -10,6 +10,7 @@ import OrderElementConfigModal from "../../components/order-element-config-modal
 import { useState } from "react";
 import { useAppContext } from "../../services/AppContext";
 import MobileNavigationSection from "../../components/mobile-navigation-section/MobileNavigationSection";
+import FooterSection from "../../components/footer-section/FooterSection";
 
 function MenuPage() {
   const [modalVisibility, setModalVisibility] = useState(false);
@@ -24,6 +25,8 @@ function MenuPage() {
     sectionMainCourse,
     sectionCocktails,
     sectionDesserts,
+    setIdDish,
+    idDish,
   } = useAppContext();
 
   return (
@@ -53,6 +56,7 @@ function MenuPage() {
                   setDishPrice(dish.price);
                   setNumberOfItemsInBasket(dish.numberOfItemsInBasket);
                   setSectionType("Antipasti");
+                  setIdDish(dish.id);
                 }}
               />
             ))}
@@ -74,6 +78,7 @@ function MenuPage() {
                   setDishPrice(dish.price);
                   setNumberOfItemsInBasket(dish.numberOfItemsInBasket);
                   setSectionType("MainCourse");
+                  setIdDish(dish.id);
                 }}
               />
             ))}
@@ -98,6 +103,7 @@ function MenuPage() {
                   setDishPrice(dish.price);
                   setNumberOfItemsInBasket(dish.numberOfItemsInBasket);
                   setSectionType("Desserts");
+                  setIdDish(dish.id);
                 }}
               />
             ))}
@@ -120,6 +126,7 @@ function MenuPage() {
                   setDishPrice(dish.price);
                   setNumberOfItemsInBasket(dish.numberOfItemsInBasket);
                   setSectionType("Cocktails");
+                  setIdDish(dish.id);
                 }}
               />
             ))}
@@ -136,9 +143,11 @@ function MenuPage() {
             dishPrice={dishPrice}
             sectionType={sectionType}
             numberOfItemsInBasket={numberOfItemsInBasket}
+            idDish={idDish}
           />
         ) : null}
       </div>
+      <FooterSection />
     </>
   );
 }

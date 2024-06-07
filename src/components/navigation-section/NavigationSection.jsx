@@ -25,18 +25,14 @@ function NavigationSection() {
           <li>
             <Link to="/home">Home</Link>
           </li>
-          <li>
-            <Link
-              onClick={() => {
-                const aboutSection = document.getElementById("about");
-                aboutSection.scrollIntoView({
-                  behavior: "smooth",
-                  block: "start",
-                });
-              }}
-            >
-              About
-            </Link>
+          <li
+            onClick={() => {
+              navigate(ROUTE_PATHS.HOME, {
+                state: { scrollToAbout: true },
+              });
+            }}
+          >
+            <Link>About</Link>
           </li>
           <li>
             <Link to="/menu">Menu/Order</Link>

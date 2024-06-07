@@ -4,7 +4,9 @@
   justify-content: space-between;
 
   .logo-container {
+    flex-shrink: 1;
     margin-top: 22px;
+    margin-right: 0px;
     height: 71px;
     display: flex;
     cursor: pointer;
@@ -46,6 +48,19 @@
         color: black;
         text-decoration: none;
         justify-content: space-between;
+      }
+    }
+  }
+}
+
+@media (max-width: 930px) {
+  .nav-container {
+    .nav-links {
+      gap: 15px;
+      .list-of-links {
+        padding-left: 15px;
+        margin-left: 0px;
+        gap: 15px;
       }
     }
   }

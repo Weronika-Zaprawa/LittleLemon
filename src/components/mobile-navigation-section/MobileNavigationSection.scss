@@ -1,5 +1,6 @@
 .mobile-nav-container {
   display: flex;
+  z-index: 9999;
   flex-direction: row;
   justify-content: space-between;
   gap: 15px;

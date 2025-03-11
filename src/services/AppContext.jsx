@@ -38,7 +38,7 @@ export const AppProvider = ({ children }) => {
 
   const [idDish, setIdDish] = useState();
 
-  const link = "https://littlelemonapi.onrender.com";
+  const link = "https://littlelemonapi-production.up.railway.app";
 
   async function getMenu() {
     const response = await fetch(link + "/menu", {
